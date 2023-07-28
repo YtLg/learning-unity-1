@@ -19,7 +19,7 @@ From this I learnt multiple things, including, but not limited to:
 After finishing the tutorial, they reccomended multiple things that I could do to discover and learn more about unity myself
 
 - [x] finish the game ( tutorial)
-- [ ] add animation
+- [X] add animation
 - [ ] Add sound
 - [ ] Add a game-over if out of bounds
 - [ ] Add a particle system generate moving background
