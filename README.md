@@ -21,7 +21,7 @@ After finishing the tutorial, they reccomended multiple things that I could do t
 - [x] finish the game ( tutorial)
 - [X] add animation
 - [ ] Add sound
-- [ ] Add a game-over if out of bounds
+- [X] Add a game-over if out of bounds
 - [ ] Add a particle system generate moving background
 - [ ] Add a title screen
 - [ ] Add a way to save the score of the player
