@@ -6,9 +6,16 @@ public class PipeMiddleScript : MonoBehaviour
 {
     public LogicScript logic;
 
+    // creates variable to store musicScript reference.
+    public MusicScript music;
+
     // Start is called before the first frame update
     void Start()
     {
+        // gets the MusicScript from the AudioManager object so its classes can be used here.
+        music = GameObject.FindGameObjectWithTag("Sound").GetComponent<MusicScript>();
+
+        // same with LogicScript
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
     }
 
@@ -22,6 +29,7 @@ public class PipeMiddleScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
+            music.playPoint();
             logic.addScore(1);
         }
     }
