@@ -7,6 +7,12 @@ public class burgerScript : MonoBehaviour
     // by default, the script only sees the name and transformation components of the object, so you have to create a rigidBody2D slot for it and drag it into the slot in unity
     public Rigidbody2D myRigidbody;
     public LogicScript logic;
+    public AudioSource sound;
+
+    // allows different audio clips to be referenced and used by the script allowing it to run different sounds
+    public AudioClip hit;
+    public AudioClip death;
+    public AudioClip flap;
 
     public bool burgerLife;
     public float flapStrength;
@@ -15,13 +21,18 @@ public class burgerScript : MonoBehaviour
     public Sprite sprite0;
     public Sprite sprite1;
 
+    public int counter = 0;
+
     
     // Start is called before the first frame update
     void Start()
     {
+        counter = 0;
         burgerLife = true;
         // gets the logic script (copied from pipeMiddle) so it can use logic classes)
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,8 +43,12 @@ public class burgerScript : MonoBehaviour
         // for the first time that space is pressed (will not run again until space has been released) so long as the burger is alive..?:
         if (Input.GetKeyDown(KeyCode.Space) && burgerLife == true)
         {
+            // changes the audio clip to the flap sound effect and plays it.
+            sound.clip = flap;
+            sound.Play();
+
             // rotates the object upwards for the animation
-           transform.Rotate(0.0f, 0.0f, 14.216f, Space.Self);
+            transform.Rotate(0.0f, 0.0f, 14.216f, Space.Self);
 
             //if you want to change the velocity you have to state a vector coordinate of where you want it to go, it must be done by using a vector object
             myRigidbody.velocity = new Vector2(0.0f, 1.0f) * flapStrength;
@@ -56,9 +71,16 @@ public class burgerScript : MonoBehaviour
     // Class that runs when the bird collides with something.
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        sound.clip = hit;
+        sound.Play();
+
         logic.gameOver();
 
         // sets burger life to false
         burgerLife = false;
+
+
+
     }
 }
