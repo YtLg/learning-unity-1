@@ -15,22 +15,25 @@ public class burgerScript : MonoBehaviour
     public Sprite sprite0;
     public Sprite sprite1;
 
-    // creates variable to store musicScript reference.
-    public MusicScript music;
+
+    // audio variables
+    public AudioSource currSound;
+    public AudioClip flap;
+    public AudioClip hit;
+
 
     public int counter;
 
     // Start is called before the first frame update
     void Start()
     {
+        currSound = GetComponent<AudioSource>();
         counter = 0;
+
         burgerLife = true;
 
         // gets the logic script (copied from pipeMiddle) so it can use logic classes)
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
-
-        // gets the MusicScript from the AudioManager object so its classes can be used here.
-        music = GameObject.FindGameObjectWithTag("Sound").GetComponent<MusicScript>();
     }
 
     // Update is called once per frame
@@ -41,7 +44,8 @@ public class burgerScript : MonoBehaviour
         // for the first time that space is pressed (will not run again until space has been released) so long as the burger is alive..?:
         if (Input.GetKeyDown(KeyCode.Space) && burgerLife == true)
         {
-            music.playFlap();
+            currSound.clip = flap;
+            currSound.Play();
 
             // rotates the object upwards for the animation
             transform.Rotate(0.0f, 0.0f, 14.216f, Space.Self);
@@ -67,19 +71,29 @@ public class burgerScript : MonoBehaviour
     // Class that runs when the bird collides with something.
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        music.playHit();
+
+        if (counter == 0)
+        {
+            currSound.clip = hit;
+            currSound.Play();
+        }
 
         logic.gameOver();
 
         // sets burger life to false
         burgerLife = false;
 
+    }
 
-        if (burgerLife == false && counter == 0){
-            counter++;
-            GetComponent<AudioSource>().Stop();
-            music.playDeath();
-        }
+    // noticed that point sound still happens when burger is dead, so I made a "getter" in order to provide the life status of the burger
+    public bool getLife()
+    {
+        return burgerLife;
+    }
 
+    // added a setter for burgerLife so other scripts can make a game-over by setting this.
+    public void setLife(bool set)
+    {
+        burgerLife = set;
     }
 }

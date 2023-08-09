@@ -13,7 +13,20 @@ public class LogicScript : MonoBehaviour
     public Text scoreText;
     public GameObject gameOverScreen;
 
-    
+
+    public AudioSource currSound;
+    public AudioClip fall;
+
+    // counter to make sure audio plays only once
+    public int counter;
+
+    private void Start()
+    {
+        counter = 0;
+        currSound = GetComponent<AudioSource>();
+    }
+
+
     [ContextMenu("Increase Score")]
     public void addScore(int scoreToAdd)
     {
@@ -28,6 +41,12 @@ public class LogicScript : MonoBehaviour
 
     public void gameOver()
     {
+        if (counter == 0){
+            currSound.clip = fall;
+            currSound.Play();
+            counter++;
+        }
+       
         gameOverScreen.SetActive(true);
     }
 

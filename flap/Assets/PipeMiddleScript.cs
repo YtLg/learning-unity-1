@@ -5,18 +5,20 @@ using UnityEngine;
 public class PipeMiddleScript : MonoBehaviour
 {
     public LogicScript logic;
+    public burgerScript burger;
 
-    // creates variable to store musicScript reference.
-    public MusicScript music;
+    // audio variables
+    public AudioSource currSound;
+    public AudioClip score;
 
     // Start is called before the first frame update
     void Start()
     {
-        // gets the MusicScript from the AudioManager object so its classes can be used here.
-        music = GameObject.FindGameObjectWithTag("Sound").GetComponent<MusicScript>();
+        currSound = GetComponent<AudioSource>();
 
         // same with LogicScript
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        burger = GameObject.FindGameObjectWithTag("Player").GetComponent<burgerScript>();
     }
 
     // Update is called once per frame
@@ -27,9 +29,11 @@ public class PipeMiddleScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 3)
+        // only runs the following code if the burger is still alive
+        if (collision.gameObject.layer == 3 && burger.getLife() == true)
         {
-            music.playPoint();
+            currSound.clip = score;
+            currSound.Play();
             logic.addScore(1);
         }
     }
