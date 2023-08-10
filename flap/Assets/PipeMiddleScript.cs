@@ -5,7 +5,7 @@ using UnityEngine;
 public class PipeMiddleScript : MonoBehaviour
 {
     public LogicScript logic;
-    public burgerScript burger;
+    public BurgerScript burger;
 
     // audio variables
     public AudioSource currSound;
@@ -18,23 +18,17 @@ public class PipeMiddleScript : MonoBehaviour
 
         // same with LogicScript
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
-        burger = GameObject.FindGameObjectWithTag("Player").GetComponent<burgerScript>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        burger = GameObject.FindGameObjectWithTag("Player").GetComponent<BurgerScript>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // only runs the following code if the burger is still alive
-        if (collision.gameObject.layer == 3 && burger.getLife() == true)
+        if (collision.gameObject.layer == 3 && burger.GetLife() == true)
         {
             currSound.clip = score;
             currSound.Play();
-            logic.addScore(1);
+            logic.AddScore(1);
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class burgerScript : MonoBehaviour
+public class BurgerScript : MonoBehaviour
 {
     // by default, the script only sees the name and transformation components of the object, so you have to create a rigidBody2D slot for it and drag it into the slot in unity
     public Rigidbody2D myRigidbody;
@@ -71,14 +71,15 @@ public class burgerScript : MonoBehaviour
     // Class that runs when the bird collides with something.
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        // makes it so the contact sound effect only hits once even if the burger hits the pipe multiple times
         if (counter == 0)
         {
             currSound.clip = hit;
             currSound.Play();
+            counter++;
         }
 
-        logic.gameOver();
+        logic.GameOver();
 
         // sets burger life to false
         burgerLife = false;
@@ -86,13 +87,13 @@ public class burgerScript : MonoBehaviour
     }
 
     // noticed that point sound still happens when burger is dead, so I made a "getter" in order to provide the life status of the burger
-    public bool getLife()
+    public bool GetLife()
     {
         return burgerLife;
     }
 
     // added a setter for burgerLife so other scripts can make a game-over by setting this.
-    public void setLife(bool set)
+    public void SetLife(bool set)
     {
         burgerLife = set;
     }

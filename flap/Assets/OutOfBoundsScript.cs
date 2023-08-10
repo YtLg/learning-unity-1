@@ -7,7 +7,7 @@ public class OutOfBoundsScript : MonoBehaviour
     // reference the LogicScript so you can get the gameover function
     public LogicScript logic;
 
-    public burgerScript burger;
+    public BurgerScript burger;
 
     // Start is called before the first frame update
     void Start()
@@ -15,20 +15,14 @@ public class OutOfBoundsScript : MonoBehaviour
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
 
         // gets the burgerScript so it can use setLife to make a game over
-        burger = GameObject.FindGameObjectWithTag("Player").GetComponent<burgerScript>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-         
+        burger = GameObject.FindGameObjectWithTag("Player").GetComponent<BurgerScript>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 3)
         {
-            logic.gameOver();
-            burger.setLife(false);
+            logic.GameOver();
+            burger.SetLife(false);
             Debug.Log("hello");
         }
     }

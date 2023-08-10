@@ -28,18 +28,18 @@ public class LogicScript : MonoBehaviour
 
 
     [ContextMenu("Increase Score")]
-    public void addScore(int scoreToAdd)
+    public void AddScore(int scoreToAdd)
     {
-        playerScore = playerScore + scoreToAdd;
+        playerScore += scoreToAdd;
         scoreText.text = playerScore.ToString();
     }
 
-    public void restartGame()
+    public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void gameOver()
+    public void GameOver()
     {
         if (counter == 0){
             currSound.clip = fall;
