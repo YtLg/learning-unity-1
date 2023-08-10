@@ -14,13 +14,15 @@ From this I learnt multiple things, including, but not limited to:
 - How to create blueprints
 - How to create & utilise UI
 
-## todo
+## to-do
+
+- [x] finish the game ( tutorial)
 
 After finishing the tutorial, they reccomended multiple things that I could do to discover and learn more about unity myself
 
-- [x] finish the game ( tutorial)
+
 - [X] add animation
-- [ ] Add sound
+- [X] Add sound
 - [X] Add a game-over if out of bounds
 - [ ] Add a particle system generate moving background
 - [ ] Add a title screen
