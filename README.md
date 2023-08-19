@@ -25,5 +25,9 @@ After finishing the tutorial, they reccomended multiple things that I could do t
 - [X] Add sound
 - [X] Add a game-over if out of bounds
 - [X] Add a particle system generate moving background
-- [ ] Add a title screen
+- [X] Add a title screen
 - [ ] Add a way to save the score of the player
+
+After completing the list of additional features he has mentioned, he also suggested that I should attempt to add a new mechanic into the game
+
+- [] Add a unique mechanic to the game
