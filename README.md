@@ -30,4 +30,4 @@ After finishing the tutorial, they reccomended multiple things that I could do t
 
 After completing the list of additional features he has mentioned, he also suggested that I should attempt to add a new mechanic into the game
 
-- [] Add a unique mechanic to the game
+- [ ] Add a unique mechanic to the game
