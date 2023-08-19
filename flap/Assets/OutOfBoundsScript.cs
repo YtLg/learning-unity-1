@@ -23,7 +23,6 @@ public class OutOfBoundsScript : MonoBehaviour
         {
             logic.GameOver();
             burger.SetLife(false);
-            Debug.Log("hello");
         }
     }
 
