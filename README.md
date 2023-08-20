@@ -26,8 +26,13 @@ After finishing the tutorial, they reccomended multiple things that I could do t
 - [X] Add a game-over if out of bounds
 - [X] Add a particle system generate moving background
 - [X] Add a title screen
-- [ ] Add a way to save the score of the player
+- [X] Add a way to save the score of the player
 
 After completing the list of additional features he has mentioned, he also suggested that I should attempt to add a new mechanic into the game
 
 - [ ] Add a unique mechanic to the game
+
+
+Although not needed, since it was a beginner project to learn the ropes of how to make a basic game, I felt the assets looked rushed and needed polishing:
+
+- [ ] Polish game appearance

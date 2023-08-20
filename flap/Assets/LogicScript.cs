@@ -13,6 +13,8 @@ public class LogicScript : MonoBehaviour
     public Text scoreText;
     public GameObject gameOverScreen;
 
+    public Text goScore;
+    public Text goHiScore;
 
     public AudioSource currSound;
     public AudioClip fall;
@@ -31,7 +33,7 @@ public class LogicScript : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         playerScore += scoreToAdd;
-        scoreText.text = playerScore.ToString();
+        scoreText.text = playerScore.ToString(); ;
     }
 
     public void RestartGame()
@@ -46,7 +48,18 @@ public class LogicScript : MonoBehaviour
             currSound.Play();
             counter++;
         }
-       
+
+        // sets the game over screen player score to be the score that the player achieved.
+        goScore.text = ("Score: " + playerScore.ToString());
+
+        // replaces the highscore in text file with current score if it is a larger number, the 0 is there so if there is no "best" text file it will create one and put 0 in it
+        if (playerScore > PlayerPrefs.GetInt("Best", 0))
+        {
+            PlayerPrefs.SetInt("Best", playerScore);
+        }
+
+        goHiScore.text = ("Best: " + PlayerPrefs.GetInt("Best", 0).ToString());
+
         gameOverScreen.SetActive(true);
     }
 
