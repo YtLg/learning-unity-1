@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LogicScript : MonoBehaviour
+
 {
     // creates a variable for you to drag the object into so the script knows what object the code is referring to.
     public int playerScore;
+    public int checkpoints = 0;
     public Text scoreText;
     public GameObject gameOverScreen;
 
@@ -19,13 +21,20 @@ public class LogicScript : MonoBehaviour
     public AudioSource currSound;
     public AudioClip fall;
 
+    
+
     // counter to make sure audio plays only once
     public int counter;
+
+    //adds variable to store reference to PipeMove so it can change the speed at which the pipes come
+    public SpawnScript spawn;
 
     private void Start()
     {
         counter = 0;
         currSound = GetComponent<AudioSource>();
+
+        spawn = GameObject.FindGameObjectWithTag("Pipes").GetComponent<SpawnScript>();
     }
 
 
@@ -33,7 +42,14 @@ public class LogicScript : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         playerScore += scoreToAdd;
-        scoreText.text = playerScore.ToString(); ;
+        scoreText.text = playerScore.ToString();
+
+        // every 5 point the player earns the game speeds up by a rate of 1
+        if (playerScore == checkpoints + 5)
+        {
+            spawn.SetPipeSpeed(1);
+            checkpoints += 5;
+        }
     }
 
     public void RestartGame()

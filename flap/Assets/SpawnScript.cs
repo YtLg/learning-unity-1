@@ -10,10 +10,13 @@ public class SpawnScript : MonoBehaviour
 
     public float heightOffset = 10;
 
+    public float rate;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        spawnPipe();
+        SpawnPipe();
     }
 
     // Update is called once per frame
@@ -26,12 +29,12 @@ public class SpawnScript : MonoBehaviour
 
         else
         {
-            spawnPipe();
+            SpawnPipe();
             timer = 0;
         }
     }
 
-    void spawnPipe()
+    void SpawnPipe()
     {
         // creates the minimum and maximum Y position the pipes can spawn in by using a calculation, can create a variable doing this because it's local inside spawnPipe.
         float lowestPoint = transform.position.y - heightOffset;
@@ -39,5 +42,15 @@ public class SpawnScript : MonoBehaviour
 
         // makes it so the pipes spawn at a y value between the lowest and highest point, therefore randomizing the spawn
         Instantiate(pipes, new Vector3(transform.position.x, Random.Range(lowestPoint,highestPoint), 0),  transform.rotation);
+    }
+
+    public void SetPipeSpeed(float speed)
+    {
+        rate += speed;
+    }
+
+    public float GetPipeSpeed()
+    {
+        return rate;
     }
 }

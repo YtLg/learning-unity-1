@@ -21,6 +21,8 @@ public class PipeMiddleScript : MonoBehaviour
         burger = GameObject.FindGameObjectWithTag("Player").GetComponent<BurgerScript>();
     }
 
+
+    // The player object won't actually be stopped by pipe middle, as the "is trigger" box is checked, meaning that it will still run upon collision, but it will not have a physical collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // only runs the following code if the burger is still alive

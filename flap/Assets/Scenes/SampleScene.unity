@@ -5120,7 +5120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -6048,6 +6048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScore: 0
+  checkpoints: 0
   scoreText: {fileID: 1770363144}
   gameOverScreen: {fileID: 2018925910}
   goScore: {fileID: 1161673357}
@@ -6055,6 +6056,7 @@ MonoBehaviour:
   currSound: {fileID: 0}
   fall: {fileID: 8300000, guid: ceb8506d30740ab4f891ce1e9748ab03, type: 3}
   counter: 0
+  spawn: {fileID: 0}
 --- !u!4 &1423045285
 Transform:
   m_ObjectHideFlags: 0
