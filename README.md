@@ -36,4 +36,5 @@ Note: I opted in to add in ramping speeds for the pipes that made the game more 
 
 #### Although not needed, since it was a beginner project to learn the ropes of how to make a basic game, I felt the assets looked rushed and needed polishing:
 
-- [ ] Polish game appearance
+- [X] Polish game appearance
+      note: I changed the background and the particle system image as well as the pipe image, but not the UI appearance
